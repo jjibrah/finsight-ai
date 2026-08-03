@@ -1,0 +1,62 @@
+
+### =========================
+### SPRING BOOT HEALTH CHECK
+### =========================
+GET http://localhost:8080/api/holdings
+
+
+### =========================
+### ADD HOLDING - AAPL
+### =========================
+POST http://localhost:8080/api/holdings
+Content-Type: application/json
+
+{
+  "symbol": "AAPL",
+  "quantity": 11,
+  "buyPrice": 130
+}
+
+
+### =========================
+### ADD HOLDING - TSLA
+### =========================
+POST http://localhost:8080/api/holdings
+Content-Type: application/json
+
+{
+  "symbol": "TSLA",
+  "quantity": 5,
+  "buyPrice": 200
+}
+
+
+### =========================
+### ADD HOLDING - GOOGL
+### =========================
+POST http://localhost:8080/api/holdings
+Content-Type: application/json
+
+{
+  "symbol": "GOOGL",
+  "quantity": 8,
+  "buyPrice": 140
+}
+
+
+### =========================
+### GET ALL HOLDINGS (CHECK P&L)
+### =========================
+GET http://localhost:8080/api/holdings
+
+
+### =========================
+### DELETE HOLDING (CHANGE ID IF NEEDED)
+### =========================
+DELETE http://localhost:8080/api/holdings/1
+
+
+### =========================
+### AI PORTFOLIO ANALYSIS (SPRINT 3)
+### =========================
+POST http://localhost:8080/api/portfolio/analyse
