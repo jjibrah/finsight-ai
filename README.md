@@ -384,7 +384,7 @@ Recommended production improvements:
 ---
 # Demo Screenshots
 
-## Application Startup
+## Health check and adding Holdings
 
 The Spring Boot application successfully starts and runs on port `8080`.
 
@@ -394,17 +394,23 @@ The Spring Boot application successfully starts and runs on port `8080`.
 
 ## Portfolio Management API
 
-Creating and retrieving investment holdings through the REST API.
+retrieving investment holdings through the REST API.
 
-![Portfolio Holdings API](img2.png)
+![Portfolio Holdings API](IMG2.png)
 
 ---
+
+## Portfolio management - DELETE
+
+Deleting investment holdings through the REST API using ID.
+
+![Gemini Portfolio Analysis](IMG3.png) 
 
 ## AI Portfolio Analysis
 
 Generating portfolio insights using Google Gemini AI.
 
-![Gemini Portfolio Analysis](img3.png)
+![Gemini Portfolio Analysis](img4.png)
 
 # Production Deployment Roadmap
 
