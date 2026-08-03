@@ -412,24 +412,6 @@ Generating portfolio insights using Google Gemini AI.
 
 ![Gemini Portfolio Analysis](img4.png)
 
-# Production Deployment Roadmap
-
-Future production architecture:
-
-```
-                Users
-                  |
-                Nginx
-                  |
-          Spring Boot Application
-                  |
-        +---------+---------+
-        |                   |
-   PostgreSQL          Redis Cache
-        |
-        |
-   Gemini AI Service
-```
 
 ---
 
