@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class HoldingController {
     private HoldingService service;
 
-    public HoldingController(HoldingService services){
+    public HoldingController(HoldingService service){
         this.service=service;
     }
 
