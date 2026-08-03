@@ -1,18 +1,23 @@
-package com.finsight.finsight_ai.dto;
+ package com.finsight.finsight_ai.dto;
 
-public class HoldingResponse {
-    public Long id;
-    public String symbol;
-    public double quantity;
-    public double buyPrice;
-    public double pnl;
+  public class HoldingResponse {
+      public Long id;
+      public String symbol;
+      public double quantity;
+      public double buyPrice;
+      public double pnl;
 
-    //constructor
-    public HoldingResponse(Long id, String symbol, double buyPrice, double quantity, double pnl){
-        this.id=id;
-        this.symbol=symbol;
-        this.buyPrice=  buyPrice;
-        this.quantity=  quantity;
-        this.pnl=pnl;
-    }
-}
+      public HoldingResponse(
+              Long id,
+              String symbol,
+              double quantity,
+              double buyPrice,
+              double pnl
+      ) {
+          this.id = id;
+          this.symbol = symbol;
+          this.quantity = quantity;
+          this.buyPrice = buyPrice;
+          this.pnl = pnl;
+      }
+  }

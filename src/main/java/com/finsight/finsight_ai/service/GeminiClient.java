@@ -19,27 +19,52 @@ public class GeminiClient {
 
     public String getAnalysis(String prompt) {
 
-        String url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=" + apiKey;
+	String url =
+        	"https://generativelanguage.googleapis.com/v1beta/models/"
+        	+ "gemini-3.5-flash-lite:generateContent";
 
         Map<String, Object> request = Map.of(
                 "contents", new Object[]{
-                        Map.of("parts", new Object[]{
-                                Map.of("text", prompt)
-                        })
+                        Map.of(
+                                "parts", new Object[]{
+                                        Map.of("text", prompt)
+                                }
+                        )
                 }
         );
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
+
+	HttpHeaders headers = new HttpHeaders();
+ 	headers.setContentType(MediaType.APPLICATION_JSON);
+	headers.set("x-goog-api-key", apiKey);
+
 
         HttpEntity<Map<String, Object>> entity =
                 new HttpEntity<>(request, headers);
 
-        ResponseEntity<String> response =
-                restTemplate.postForEntity(url, entity, String.class);
+        ResponseEntity<String> response;
+
+        try {
+            response = restTemplate.postForEntity(
+                    url,
+                    entity,
+                    String.class
+            );
+        } catch (Exception e) {
+            throw new RuntimeException(
+                    "Failed to connect to Gemini API: " + e.getMessage()
+            );
+        }
+
+        if (!response.getStatusCode().is2xxSuccessful()) {
+            throw new RuntimeException(
+                    "Gemini API error: " + response.getBody()
+            );
+        }
 
         try {
             ObjectMapper mapper = new ObjectMapper();
+
             JsonNode root = mapper.readTree(response.getBody());
 
             return root
@@ -52,7 +77,10 @@ public class GeminiClient {
                     .asText();
 
         } catch (Exception e) {
-            throw new RuntimeException("Failed to parse Gemini response", e);
+            throw new RuntimeException(
+                    "Failed to parse Gemini response: " + response.getBody(),
+                    e
+            );
         }
     }
 }
